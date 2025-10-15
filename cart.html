@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shopping Cart - Veggy Shop</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="cart-styles.css"/>
+  <style>
+    .cart-stats {
+      margin: 20px;
+      padding: 10px;
+      background-color: #f3f3f3;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    .cart-container {
+      padding: 20px;
+    }
+    .cart-items {
+      flex: 2;
+    }
+    .cart-content {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ccc;
+      padding: 10px 0;
+    }
+    .item-info {
+      display: flex;
+      gap: 15px;
+    }
+    .item-controls {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .qty-btn, .remove-btn {
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+    nav {
+      display: flex;
+      gap: 20px;
+      padding: 15px;
+      background: #e8ffe5;
+    }
+    nav a {
+      text-decoration: none;
+      font-weight: bold;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="contact.html">Contact</a>
+    <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
+  </nav>
+
+  <div class="cart-container">
+    <div class="cart-header">
+      <h1>🛒 Your Shopping Cart</h1>
+      <button onclick="clearCart()" class="clear-btn">Clear All</button>
+    </div>
+
+    <!-- New top summary -->
+    <div class="cart-stats">
+      <p><strong>Total Items:</strong> <span id="top-total-items">0</span></p>
+      <p><strong>Subtotal:</strong> ₹<span id="top-subtotal">0</span></p>
+    </div>
+
+    <div class="cart-content">
+      <div class="cart-items" id="cart-items">
+        <!-- Cart items will appear here -->
+      </div>
+
+      <div class="cart-summary">
+        <div class="summary-card">
+          <h3>Order Summary</h3>
+          <div class="summary-row"><span>Total Items:</span><span id="total-items">0</span></div>
+          <div class="summary-row"><span>Subtotal:</span><span id="subtotal">₹0</span></div>
+          <div class="summary-row"><span>Delivery:</span><span id="delivery">₹50</span></div>
+          <div class="summary-row total-row"><span>Total Amount:</span><span id="total-amount">₹50</span></div>
+          <button onclick="checkout()" class="checkout-btn">Proceed to Checkout</button>
+          <button onclick="generatePDF()" class="pdf-btn">📄 Download Bill</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="empty-cart" id="empty-cart" style="display: none;">
+      <div class="empty-cart-content">
+        <h2>🛒 Your cart is empty</h2>
+        <p>Add some fresh vegetables to get started!</p>
+        <a href="index.html" class="continue-shopping">Continue Shopping</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    function updateCartDisplay() {
+      const cartItemsContainer = document.getElementById('cart-items');
+      const emptyCartDiv = document.getElementById('empty-cart');
+      const cartContent = document.querySelector('.cart-content');
+
+      if (cart.length === 0) {
+        cartContent.style.display = 'none';
+        emptyCartDiv.style.display = 'block';
+        updateCartCount();
+        updateSummary(); // Also clear summary
+        return;
+      }
+
+      cartContent.style.display = 'flex';
+      emptyCartDiv.style.display = 'none';
+
+      const groupedItems = {};
+      cart.forEach(item => {
+        if (groupedItems[item.name]) {
+          groupedItems[item.name].quantity += 1;
+          groupedItems[item.name].total += item.price;
+        } else {
+          groupedItems[item.name] = {
+            name: item.name,
+            price: item.price,
+            quantity: 1,
+            total: item.price,
+            imageUrl: item.imageUrl || "https://via.placeholder.com/80"
+          };
+        }
+      });
+
+      cartItemsContainer.innerHTML = '';
+      Object.values(groupedItems).forEach(item => {
+        const itemElement = document.createElement('div');
+        itemElement.className = 'cart-item';
+        itemElement.innerHTML = `
+          <div class="item-info">
+            <img src="${item.imageUrl}" alt="${item.name}" width="80" height="80">
+            <div class="item-details">
+              <h4>${item.name}</h4>
+              <p>₹${item.price} per kg</p>
+            </div>
+          </div>
+          <div class="item-controls">
+            <div class="quantity-controls">
+              <button onclick="decreaseQuantity('${item.name}')" class="qty-btn">-</button>
+              <span class="quantity">${item.quantity}</span>
+              <button onclick="increaseQuantity('${item.name}', ${item.price}, '${item.imageUrl}')" class="qty-btn">+</button>
+            </div>
+            <div class="item-total">₹${item.total}</div>
+            <button onclick="removeItem('${item.name}')" class="remove-btn">🗑️</button>
+          </div>
+        `;
+        cartItemsContainer.appendChild(itemElement);
+      });
+
+      updateSummary();
+      updateCartCount();
+    }
+
+    function updateSummary() {
+      const totalItems = cart.length;
+      const subtotal = cart.reduce((sum, item) => sum + item.price, 0);
+      const delivery = subtotal > 0 ? 50 : 0;
+      const total = subtotal + delivery;
+
+      document.getElementById('total-items').textContent = totalItems;
+      document.getElementById('subtotal').textContent = `₹${subtotal}`;
+      document.getElementById('delivery').textContent = `₹${delivery}`;
+      document.getElementById('total-amount').textContent = `₹${total}`;
+
+      // Update the top summary as well
+      document.getElementById('top-total-items').textContent = totalItems;
+      document.getElementById('top-subtotal').textContent = subtotal;
+    }
+
+    function updateCartCount() {
+      const cartCount = document.getElementById('cart-count');
+      if (cartCount) {
+        cartCount.textContent = cart.length;
+      }
+    }
+
+    function increaseQuantity(name, price, imageUrl) {
+      cart.push({ name, price, imageUrl });
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateCartDisplay();
+    }
+
+    function decreaseQuantity(name) {
+      const index = cart.findIndex(item => item.name === name);
+      if (index !== -1) {
+        cart.splice(index, 1);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartDisplay();
+      }
+    }
+
+    function removeItem(name) {
+      cart = cart.filter(item => item.name !== name);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateCartDisplay();
+    }
+
+    function clearCart() {
+      if (confirm('Are you sure you want to clear your cart?')) {
+        cart = [];
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartDisplay();
+      }
+    }
+
+    function checkout() {
+      if (cart.length === 0) {
+        alert('Your cart is empty!');
+        return;
+      }
+      alert('Redirecting to checkout... (Demo)');
+    }
+
+    function generatePDF() {
+      if (cart.length === 0) {
+        alert('Your cart is empty!');
+        return;
+      }
+
+      const groupedItems = {};
+      cart.forEach(item => {
+        if (groupedItems[item.name]) {
+          groupedItems[item.name].quantity += 1;
+          groupedItems[item.name].total += item.price;
+        } else {
+          groupedItems[item.name] = {
+            name: item.name,
+            price: item.price,
+            quantity: 1,
+            total: item.price
+          };
+        }
+      });
+
+      const subtotal = cart.reduce((sum, item) => sum + item.price, 0);
+      const delivery = 50;
+      const total = subtotal + delivery;
+
+      let billContent = `VEGGY SHOP BILL\n===============\nDate: ${new Date().toLocaleDateString()}\n\nITEMS:\n------------\n`;
+      Object.values(groupedItems).forEach(item => {
+        billContent += `${item.name} x ${item.quantity} = ₹${item.total}\n`;
+      });
+
+      billContent += `------------\nSubtotal: ₹${subtotal}\nDelivery: ₹${delivery}\nTOTAL: ₹${total}\n\nThank you for shopping with Veggy Shop!`;
+
+      const blob = new Blob([billContent], { type: 'text/plain' });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `veggy-shop-bill-${Date.now()}.txt`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      window.URL.revokeObjectURL(url);
+    }
+
+    document.addEventListener('DOMContentLoaded', updateCartDisplay);
+  </script>
+</body>
+</html>

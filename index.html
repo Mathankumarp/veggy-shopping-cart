@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "tqdlqz2tqr");
+</script>
+  <!-- Google tag (gtag.js) -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-REVGJVN658"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-REVGJVN658');
+</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Veggy - Fresh Vegetables & Fruits</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="index-styles.css" />
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="contact.html">Contact</a>
+    <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
+  </nav>
+
+  <header class="main-header">
+    <div class="header-content">
+      <h1 class="logo">Veggy</h1>
+      <div class="search-container">
+        <input type="text" placeholder="Search for Vegetables and Fruits" class="search-input">
+        <button class="search-btn">Search</button>
+      </div>
+      <div class="cart-info">
+        <span class="cart-text">No. of Items: <span id="header-cart-count">0</span></span>
+        <span class="cart-total">Sub Total: ₹<span id="header-cart-total">0.00</span></span>
+        <div class="cart-icon">🛒</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="products-container">
+    <div class="products-grid">
+      <!-- Row 1 -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="images\Apple.jpeg" alt="Apple">
+        </div>
+        <h3 class="product-name">Apple - 1 Kg</h3>
+        <p class="product-price">Rs. 96</p>
+        <div class="quantity-controls">
+          <button class="qty-btn minus" onclick="decreaseQty('apple')">-</button>
+          <span class="qty-display" id="qty-apple">1</span>
+          <button class="qty-btn plus" onclick="increaseQty('apple')">+</button>
+        </div>
+        <button class="add-to-cart-btn" onclick="addToCart('Apple', 96)">ADD TO CART</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="images\Banana.jpeg" alt="Banana">
+        </div>
+        <h3 class="product-name">Banana - 1 Kg</h3>
+        <p class="product-price">Rs. 16</p>
+        <div class="quantity-controls">
+          <button class="qty-btn minus" onclick="decreaseQty('banana')">-</button>
+          <span class="qty-display" id="qty-banana">1</span>
+          <button class="qty-btn plus" onclick="increaseQty('banana')">+</button>
+        </div>
+        <button class="add-to-cart-btn" onclick="addToCart('Banana', 16)">ADD TO CART</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="images\Brinjal.jpeg" alt="Brinjal">
+        </div>
+        <h3 class="product-name">Brinjal - 1 Kg</h3>
+        <p class="product-price">Rs. 75</p>
+        <div class="quantity-controls">
+          <button class="qty-btn minus" onclick="decreaseQty('brinjal')">-</button>
+          <span class="qty-display" id="qty-brinjal">1</span>
+          <button class="qty-btn plus" onclick="increaseQty('brinjal')">+</button>
+        </div>
+        <button class="add-to-cart-btn" onclick="addToCart('Brinjal', 75)">ADD TO CART</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="images\Capsicum.jpeg" alt="Capsicum">
+        </div>
+        <h3 class="product-name">Capsicum - 1 Kg</h3>
+        <p class="product-price">Rs. 22</p>
+        <div class="quantity-controls">
+          <button class="qty-btn minus" onclick="decreaseQty('capsicum')">-</button>
+          <span class="qty-display" id="qty-capsicum">1</span>
+          <button class="qty-btn plus" onclick="increaseQty('capsicum')">+</button>
+        </div>
+        <button class="add-to-cart-btn" onclick="addToCart('Capsicum', 22)">ADD TO CART</button>
+      </div>
+
+      <!-- Row 2 -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="images\Carrot.jpeg" alt="Carrot">
+        </div>
+        <h3 class="product-name">Carrot - 1 Kg</h3>
+        <p class="product-price">Rs. 48</p>
+        <div class="quantity-controls">
+          <button class="qty-btn minus" onclick="decreaseQty('carrot')">-</button>
+          <span class="qty-display" id="qty-carrot">1</span>
+          <button class="qty-btn plus" onclick="increaseQty('carrot')">+</button>
+        </div>
+        <button class="add-to-cart-btn" onclick="addToCart('Carrot', 48)">ADD TO CART</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="images\Cauliflower.jpeg" alt="Cauliflower">
+        </div>
+        <h3 class="product-name">Cauliflower - 1 Kg</h3>
+        <p class="product-price">Rs. 48</p>
+        <div class="quantity-controls">
+          <button class="qty-btn minus" onclick="decreaseQty('cauliflower')">-</button>
+          <span class="qty-display" id="qty-cauliflower">0</span>
+          <button class="qty-btn plus" onclick="increaseQty('cauliflower')">+</button>
+        </div>
+        <button class="add-to-cart-btn" onclick="addToCart('Cauliflower', 48)">ADD TO CART</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="images\Cucumber.jpeg" alt="Cucumber">
+        </div>
+        <h3 class="product-name">Cucumber - 1 Kg</h3>
+        <p class="product-price">Rs. 48</p>
+        <div class="quantity-controls">
+          <button class="qty-btn minus" onclick="decreaseQty('cucumber')">-</button>
+          <span class="qty-display" id="qty-cucumber">1</span>
+          <button class="qty-btn plus" onclick="increaseQty('cucumber')">+</button>
+        </div>
+        <button class="add-to-cart-btn" onclick="addToCart('Cucumber', 48)">ADD TO CART</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="images\Garlic.jpeg" alt="Garlic">
+        </div>
+        <h3 class="product-name">Garlic - 1 Kg</h3>
+        <p class="product-price">Rs. 48</p>
+        <div class="quantity-controls">
+          <button class="qty-btn minus" onclick="decreaseQty('garlic')">-</button>
+          <span class="qty-display" id="qty-garlic">1</span>
+          <button class="qty-btn plus" onclick="increaseQty('garlic')">+</button>
+        </div>
+        <button class="add-to-cart-btn" onclick="addToCart('Garlic', 48)">ADD TO CART</button>
+      </div>
+
+      <!-- Row 3 -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="images\Grapes.jpeg" alt="Grapes">
+        </div>
+        <h3 class="product-name">Grapes - 1 Kg</h3>
+        <p class="product-price">Rs. 48</p>
+        <div class="quantity-controls">
+          <button class="qty-btn minus" onclick="decreaseQty('grapes')">-</button>
+          <span class="qty-display" id="qty-grapes">1</span>
+          <button class="qty-btn plus" onclick="increaseQty('grapes')">+</button>
+        </div>
+        <button class="add-to-cart-btn" onclick="addToCart('Grapes', 48)">ADD TO CART</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="images\Green chilly.jpeg" alt="Green Chilly">
+        </div>
+        <h3 class="product-name">Green chilly - 1 Kg</h3>
+        <p class="product-price">Rs. 48</p>
+        <div class="quantity-controls">
+          <button class="qty-btn minus" onclick="decreaseQty('greenchilly')">-</button>
+          <span class="qty-display" id="qty-greenchilly">1</span>
+          <button class="qty-btn plus" onclick="increaseQty('greenchilly')">+</button>
+        </div>
+        <button class="add-to-cart-btn" onclick="addToCart('Green Chilly', 48)">ADD TO CART</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="images\Ladyfinger.jpeg" alt="Lady Finger">
+        </div>
+        <h3 class="product-name">Lady finger - 1 Kg</h3>
+        <p class="product-price">Rs. 48</p>
+        <div class="quantity-controls">
+          <button class="qty-btn minus" onclick="decreaseQty('ladyfinger')">-</button>
+          <span class="qty-display" id="qty-ladyfinger">1</span>
+          <button class="qty-btn plus" onclick="increaseQty('ladyfinger')">+</button>
+        </div>
+        <button class="add-to-cart-btn" onclick="addToCart('Lady Finger', 48)">ADD TO CART</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="images\Mango.jpeg" alt="Mango">
+        </div>
+        <h3 class="product-name">Mango - 1 Kg</h3>
+        <p class="product-price">Rs. 48</p>
+        <div class="quantity-controls">
+          <button class="qty-btn minus" onclick="decreaseQty('mango')">-</button>
+          <span class="qty-display" id="qty-mango">1</span>
+          <button class="qty-btn plus" onclick="increaseQty('mango')">+</button>
+        </div>
+        <button class="add-to-cart-btn" onclick="addToCart('Mango', 48)">ADD TO CART</button>
+      </div>
+
+      <!-- Row 4 -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="images\Mushroom.jpeg" alt="Mushroom">
+        </div>
+        <h3 class="product-name">Mushroom - 1 Kg</h3>
+        <p class="product-price">Rs. 48</p>
+        <div class="quantity-controls">
+          <button class="qty-btn minus" onclick="decreaseQty('mushroom')">-</button>
+          <span class="qty-display" id="qty-mushroom">1</span>
+          <button class="qty-btn plus" onclick="increaseQty('mushroom')">+</button>
+        </div>
+        <button class="add-to-cart-btn" onclick="addToCart('Mushroom', 48)">ADD TO CART</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1550258987-190a2d41a8ba?w=200&h=200&fit=crop" alt="Pineapple">
+        </div>
+        <h3 class="product-name">Pineapple - 1 Kg</h3>
+        <p class="product-price">Rs. 48</p>
+        <div class="quantity-controls">
+          <button class="qty-btn minus" onclick="decreaseQty('pineapple')">-</button>
+          <span class="qty-display" id="qty-pineapple">1</span>
+          <button class="qty-btn plus" onclick="increaseQty('pineapple')">+</button>
+        </div>
+        <button class="add-to-cart-btn" onclick="addToCart('Pineapple', 48)">ADD TO CART</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="images\Onion.jpeg" alt="Potato">
+        </div>
+        <h3 class="product-name">Potato - 1 Kg</h3>
+        <p class="product-price">Rs. 48</p>
+        <div class="quantity-controls">
+          <button class="qty-btn minus" onclick="decreaseQty('potato')">-</button>
+          <span class="qty-display" id="qty-potato">1</span>
+          <button class="qty-btn plus" onclick="increaseQty('potato')">+</button>
+        </div>
+        <button class="add-to-cart-btn" onclick="addToCart('Potato', 48)">ADD TO CART</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="images\Pumpkin.jpeg" alt="Pumpkin">
+        </div>
+        <h3 class="product-name">Pumpkin - 1 Kg</h3>
+        <p class="product-price">Rs. 48</p>
+        <div class="quantity-controls">
+          <button class="qty-btn minus" onclick="decreaseQty('pumpkin')">-</button>
+          <span class="qty-display" id="qty-pumpkin">1</span>
+          <button class="qty-btn plus" onclick="increaseQty('pumpkin')">+</button>
+        </div>
+        <button class="add-to-cart-btn" onclick="addToCart('Pumpkin', 48)">ADD TO CART</button>
+      </div>
+
+      <!-- Row 5 - Additional items -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="images\Raddish.jpeg" alt="Radish">
+        </div>
+        <h3 class="product-name">Radish - 1 Kg</h3>
+        <p class="product-price">Rs. 30</p>
+        <div class="quantity-controls">
+          <button class="qty-btn minus" onclick="decreaseQty('radish')">-</button>
+          <span class="qty-display" id="qty-radish">1</span>
+          <button class="qty-btn plus" onclick="increaseQty('radish')">+</button>
+        </div>
+        <button class="add-to-cart-btn" onclick="addToCart('Radish', 30)">ADD TO CART</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="images\Strawberry.jpeg" alt="Strawberry">
+        </div>
+        <h3 class="product-name">Strawberry - 1 Kg</h3>
+        <p class="product-price">Rs. 250</p>
+        <div class="quantity-controls">
+          <button class="qty-btn minus" onclick="decreaseQty('strawberry')">-</button>
+          <span class="qty-display" id="qty-strawberry">1</span>
+          <button class="qty-btn plus" onclick="increaseQty('strawberry')">+</button>
+        </div>
+        <button class="add-to-cart-btn" onclick="addToCart('Strawberry', 250)">ADD TO CART</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="images\Tomato.jpeg" alt="Tomato">
+        </div>
+        <h3 class="product-name">Tomato - 1 Kg</h3>
+        <p class="product-price">Rs. 35</p>
+        <div class="quantity-controls">
+          <button class="qty-btn minus" onclick="decreaseQty('tomato')">-</button>
+          <span class="qty-display" id="qty-tomato">1</span>
+          <button class="qty-btn plus" onclick="increaseQty('tomato')">+</button>
+        </div>
+        <button class="add-to-cart-btn" onclick="addToCart('Tomato', 35)">ADD TO CART</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="images\Watermelon.jpeg" alt="Watermelon">
+        </div>
+        <h3 class="product-name">Watermelon - 1 Kg</h3>
+        <p class="product-price">Rs. 25</p>
+        <div class="quantity-controls">
+          <button class="qty-btn minus" onclick="decreaseQty('watermelon')">-</button>
+          <span class="qty-display" id="qty-watermelon">1</span>
+          <button class="qty-btn plus" onclick="increaseQty('watermelon')">+</button>
+        </div>
+        <button class="add-to-cart-btn" onclick="addToCart('Watermelon', 25)">ADD TO CART</button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <a href="assets/brochure.pdf" download>📄 Download Brochure</a>
+    <p>&copy; 2024 Veggy Shop - Fresh & Organic</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+  // Quantity functions (already existing)
+  function increaseQty(productId) {
+    const qtyElement = document.getElementById(`qty-${productId}`);
+    let currentQty = parseInt(qtyElement.textContent);
+    qtyElement.textContent = currentQty + 1;
+  }
+
+  function decreaseQty(productId) {
+    const qtyElement = document.getElementById(`qty-${productId}`);
+    let currentQty = parseInt(qtyElement.textContent);
+    if (currentQty > 0) {
+      qtyElement.textContent = currentQty - 1;
+    }
+  }
+
+  // Update cart header
+  function updateHeaderCartInfo() {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const totalItems = cart.length;
+    const totalAmount = cart.reduce((sum, item) => sum + item.price, 0);
+    
+    document.getElementById('header-cart-count').textContent = totalItems;
+    document.getElementById('header-cart-total').textContent = totalAmount.toFixed(2);
+  }
+
+ document.addEventListener('DOMContentLoaded', () => {
+  updateHeaderCartInfo();
+
+  const searchBtn = document.querySelector('.search-btn');
+  const searchInput = document.querySelector('.search-input');
+  const productCards = document.querySelectorAll('.product-card');
+
+  searchBtn.addEventListener('click', () => {
+    const searchTerm = searchInput.value.trim().toLowerCase();
+
+    productCards.forEach(card => {
+      const productName = card.querySelector('.product-name').textContent.toLowerCase();
+      if (!searchTerm || productName.includes(searchTerm)) {
+        card.style.display = 'block'; // show matching or all if input is empty
+      } else {
+        card.style.display = 'none'; // hide non-matching
+      }
+    });
+  });
+
+  // BONUS: Also show all products if user clears search input manually
+  searchInput.addEventListener('input', () => {
+    if (searchInput.value.trim() === '') {
+      productCards.forEach(card => card.style.display = 'block');
+    }
+  });
+});
+
+</script>
