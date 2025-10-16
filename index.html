@@ -19,6 +19,23 @@
     gtag('config', 'G-REVGJVN658');
   </script>
 
+  <!-- ✅ Contentsquare Heatmap Tracking -->
+  <script type="text/javascript">
+    window._uxa = window._uxa || [];
+    (function() {
+      try {
+        var uxa = document.createElement('script');
+        uxa.type = 'text/javascript';
+        uxa.async = true;
+        uxa.src = 'https://t.contentsquare.net/uxa/330456.js'; // Your project ID from CSQ
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(uxa, s);
+      } catch (e) {
+        console.error('Contentsquare tracking failed:', e);
+      }
+    })();
+  </script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Veggy - Fresh Vegetables & Fruits</title>
@@ -51,7 +68,6 @@
 
   <main class="products-container">
     <div class="products-grid">
-      <!-- Row 1 -->
       <div class="product-card">
         <div class="product-image">
           <img src="images/Apple.jpeg" alt="Apple">
@@ -108,10 +124,6 @@
         <button class="add-to-cart-btn" onclick="addToCart('Capsicum', 22)">ADD TO CART</button>
       </div>
 
-      <!-- Additional products (rows 2 to 5) -->
-      <!-- Copy all product-card divs as in your original code -->
-      <!-- (Carrot, Cauliflower, Cucumber, Garlic, Grapes, etc...) -->
-
       <div class="product-card">
         <div class="product-image">
           <img src="images/Watermelon.jpeg" alt="Watermelon">
@@ -145,9 +157,7 @@
     function decreaseQty(productId) {
       const qtyElement = document.getElementById(`qty-${productId}`);
       let currentQty = parseInt(qtyElement.textContent);
-      if (currentQty > 0) {
-        qtyElement.textContent = currentQty - 1;
-      }
+      if (currentQty > 0) qtyElement.textContent = currentQty - 1;
     }
 
     // Update cart header
